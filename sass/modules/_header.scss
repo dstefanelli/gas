@@ -1,0 +1,134 @@
+@import "mixins";
+@import "variables";
+
+// HEADER
+.site-header{
+	background-color: #f8f8f8;
+	@include box-shadow(0 1px 3px 2px #555);
+	height: 50px;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+.site-logo{
+	margin: 10px 0 10px 42px;
+	img {
+		width: 70px;
+		height: auto;
+	}
+} 
+main{
+	padding-top: 60px;
+}
+.item{
+	height: 200px;
+	background: red;
+	width: 100%;
+	margin-bottom: 25px;
+}
+// CONTACT
+.header-actions {
+    position: absolute;
+	top: 13px;
+	right: 15px;
+	.actions-menu{
+			> li {
+			display: inline-block;
+			margin: 0;
+			background-color: $color-light-blue;
+			text-align: center;
+			vertical-align: middle;
+			border-radius: 50%;
+			width: 26px;
+			height: 26px;
+			&:last-child{
+				background-color: $color-orange;
+			}
+			a{
+				color: #fff;
+				font-size: 16px;
+				text-transform: uppercase;
+			}
+			.call-center {
+				display: block;
+				font-size: 10px;
+				font-weight: normal;
+			}
+			.text{
+				display: none;
+			}
+			.glyphicon{
+				display: inline-block;
+				font-size: 14px;
+				line-height: 23px;
+			}
+		}
+		
+	} 
+}
+
+@media screen and (min-width: 768px){}
+
+@media screen and (min-width: 1110px){
+	.site-header{
+		background-color: #f8f8f8;
+		height: 140px;
+		
+		position: absolute;
+		width: 100%;
+		left: 0;
+		right: 0;
+	}
+	.site-logo {
+		position: absolute;
+		top: 42px;
+		margin-left: 0;
+		img {
+			width: 154px;
+		}
+	}
+	
+	// CONTACT
+	.header-actions {
+		top: 0;
+		width: auto;
+		.actions-menu{
+			display: table;
+			width: 226px;
+				> li {
+				display: table-cell;
+				margin: 0;
+				background-color: $color-light-blue;
+				text-align: center;
+				padding: 5px 8px;
+				vertical-align: middle;
+				width: 50%;
+				height: auto;
+				border-radius: 0;
+				&:last-child{
+					background-color: $color-orange;
+					border-left: 1px solid #fff;
+				}
+				a{
+					color: #fff;
+					font-size: 14px;
+					text-transform: uppercase;
+				}
+				.call-center {
+					display: block;
+					font-size: 9px;
+					font-weight: normal;
+				}
+				.text{
+					display: inline-block;
+				}
+				.glyphicon{
+					display: none;
+				}
+			}
+		} 
+	}
+
+}

@@ -1,0 +1,32 @@
+@import "mixins";
+@import "variables";
+
+//FOOTER
+.site-footer{
+	background-color: $color-dark-grey;
+	color: #fff;
+	.footer-content{
+		padding: 30px 0;
+	}
+	.footer-share{
+		margin-bottom: 18px;
+		 ul > li{
+			display: inline-block;
+			& + li{
+				margin-left: 12px;
+			}
+			.link-rounded {
+				background-color: #ccc;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				display: inline-block;
+			}
+		}
+	} 
+	.footer-contact a {
+		color: #fff;
+		font-weight: bold;
+	}
+}
+

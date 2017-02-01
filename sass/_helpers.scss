@@ -1,0 +1,53 @@
+@import "mixins";
+@import "variables";
+
+//SHAREPOINT RESETS
+body.v4master{
+	font-family: $primary-font;
+	color: $color-black;
+}
+#s4-ribbonrow a {
+    transition: none!important;
+}
+.s4-notdlg {
+    position: relative;
+}
+#s4-leftpanel{
+ display:none;
+}
+.s4-ca{
+ margin-left: 5px;
+ background: transparent;
+}
+.s4-titletext {
+    display: none;
+}
+.s4-lp.s4-toplinks {
+    display: none;
+}
+body #s4-ribbonrow{
+	overflow: inherit;
+}
+//HELPER CLASES
+.hidde-scroll{
+	overflow: hidden;
+}
+.on{
+	display:block;
+}
+
+.off{
+	display:none;
+} 
+
+a,
+a:visited,
+a:active,
+a:focus{
+	color: $color-link;
+	@include transition(all .4s);
+	&:hover{
+		color: $color-hover;
+		text-decoration: none;
+	}
+}

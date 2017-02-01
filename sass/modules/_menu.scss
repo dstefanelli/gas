@@ -1,0 +1,329 @@
+@import "mixins";
+@import "variables";
+
+// MENU
+.nav-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+	width: 50px;
+	height: 50px;
+	@include transition(all .4s);
+	
+	&.active{
+		background-color: #9fa1a4;
+		.icon-bar{
+			background-color: #fff;
+			&::before,
+			&::after{
+				background-color: #fff;
+			}
+		}
+	}
+	.open-menu{
+		border: 0;
+		width: 24px;
+		height: 16px;
+		background: transparent;
+		position: relative;
+		margin: 18px 0 0 13px;
+		outline: none;
+	}
+	.icon-bar{
+		width: 24px;
+		height: 3px;
+		background-color: #000;
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 7px;
+		&::before,
+		&::after{
+			content: "";
+			position: absolute;
+			left: 0;
+			top: -6px;
+			width: 24px;
+			height: 3px;
+			background-color: #000;
+		}
+		&::after{
+			top: 6px;
+		}
+	}
+	
+}
+
+.searchbox{
+	margin-bottom: 8px;
+}
+
+.nav-main {
+	background-color: #9fa1a4;
+	//@include transform(translateX(-100%));
+	@include transform(scale(0));
+	@include transform-origin(top left);
+	@include transition(all .4s);
+	position: fixed;
+	top: 50px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	margin: 0;
+    width: 100%;
+	visibility: hidden;
+    overflow: auto;
+	&.active{
+		@include transform(scale(1));
+		opacity: 1;
+		visibility: visible;
+	}
+}
+//FIRST LEVEL NAVIGATION
+.first-level-navigation{
+	> li {
+		border-top: 1px solid rgba(255,255,255,.5);
+		outline: none;
+		> a, 
+		> a:visited, 
+		> a:focus{
+			display: block;
+			font: 300 14px/120% $primary-font;
+			text-transform: capitalize;
+			color: #fff;
+			padding: 8px 0;
+		}
+		a:hover{
+			text-decoration: none;
+			outline: none;
+		}
+	}
+}
+//SECOND LEVEL NAVIGATION
+.second-level-navigation {
+	background-color: #d2d4d5;
+    margin: 0 -15px;
+    padding-left: 45px;
+	@include transition(all .4s);
+	opacity: 0;
+	visibility: hidden;
+	height: 0;
+	&.active{
+		opacity: 1;
+		visibility: visible;
+		height: auto;
+	}
+	> li {
+		outline: none;
+		> a, 
+		> a:visited, 
+		> a:focus{
+			display: block;
+			font: 300 14px/120% $primary-font;
+			text-transform: capitalize;
+			color: $color-dark-grey;
+			padding: 8px 0;
+		}
+	}
+	
+	
+}
+//THIRD LEVEL NAVIGATION
+.third-level-navigation {
+    background-color: #fff;
+    margin-left: -45px;
+    padding-left: 71px;
+    padding-top: 14px;
+	@include transition(all .4s);
+	display: none;
+	/*&.active{
+		display: block;
+	}*/
+	.column{
+		> ul{
+			padding: 0 0 10px;
+			> li{
+				position: relative;
+				padding-left: 10px;
+				outline: none;
+				> a, 
+				> a:visited, 
+				> a:focus{ 
+					display: block;
+					color: #000;
+					&::before,
+					&::after{
+						content: "";
+						position: absolute;
+						top: 8px;
+						left: 0;
+						width: 5px;
+						height: 1px;
+						background-color: #000;
+						@include transform(rotate(35deg));
+					}
+					&::after{
+						top: 11px;
+						@include transform(rotate(-35deg));
+					}
+				}
+			}
+		}
+	}
+	.third-level-title{
+		font: 400 14px/120% $primary-font;
+		color: #000;
+		margin: 0 0 8px;
+		text-transform: uppercase;
+	}
+}
+
+@media screen and (min-width: 1024px){
+	
+	
+}
+@media screen and (min-width: 1110px){
+	
+	.nav-main {
+		position: relative;
+		top: auto;
+		background-color: transparent;
+		overflow: inherit;
+		@include transform(none);
+		visibility: visible;
+		opacity: 1;
+		max-width: 1170px;
+		left: auto;
+		right: auto;
+		bottom: auto;
+		margin: auto;
+	}
+	.site-nav {
+		margin-top: 107px;
+	}
+	.nav-button {
+		display: none;
+	}
+	.searchbox {
+		position: absolute;
+		bottom: 3px;
+		right: 15px;
+		.ms-sbcell input {
+			border: 0!important;
+			line-height: 37px;
+			height: 37px;
+			border-bottom: 1px solid $color-light-grey;
+		}
+		.ms-sbcell > a {
+			width: 37px;
+			height: 37px;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+	.first-level-navigation {
+		position: relative;
+		padding-left: 165px;
+		padding-right: 239px;
+		& > li{
+			display: inline-block;
+			text-align: center;
+			> a, 
+			> a:visited, 
+			> a:focus{
+				font: 400 14px/120% $primary-font;
+				text-transform: uppercase;
+				padding: 0 5px;
+				color: $color-dark-grey;
+				white-space: nowrap;
+			}
+		}
+	}
+	.second-level-navigation {
+		position: absolute;
+		top: 33px;
+		width: calc(100vw - 20px);
+		//max-width: 1170px;
+		background-color: $color-dark-grey;
+		height: 40px;
+		margin: 0;
+		line-height: 40px;
+		left: 50%;
+		@include transform(translateX(-50%));
+		@include transition(all .4s);
+		@include box-shadow(0px 2px 2px 1px #555 inset);
+		> li{
+			display: inline-block;
+			text-align: center;
+			> a, 
+			> a:visited, 
+			> a:focus{
+				font: 400 14px/120% $primary-font;
+				text-transform: uppercase;
+				padding: 0 5px;
+				color: #fff;
+				white-space: nowrap;
+			}
+		}
+	}
+	.third-level-navigation {
+		position: absolute;
+		width: calc(100vw - 20px);
+		//max-width: 1170px;
+		//left: 0;
+		left: 50%;
+		right: 0;
+		padding: 15px;
+		margin: 0;
+    	top: 40px;
+		background: rgba(255,255,255,.8);
+		@include transition(all .4s);
+		@include transform(translateX(-50%));
+		//opacity: 0;
+		//visibility: hidden;
+		display: none;
+		&.active{
+			display: block;
+			//opacity: 1;
+			//visibility: visible;
+		}
+		li{
+			display: block;
+			text-align: center;
+			> a, 
+			> a:visited, 
+			> a:focus{
+				font: 400 14px/120% $primary-font;
+				text-transform: uppercase;
+				padding: 0 5px;
+				color: $color-dark-grey;
+				white-space: normal;
+			}
+		}
+	}
+	.column {
+		.third-level-title{
+			text-align: left;
+			margin: 0 0 10px;
+			font-size: 13px;
+			text-transform: uppercase;
+			padding-bottom: 3px;
+			border-bottom: 1px solid #555;
+		}
+		li{
+			line-height: normal;
+			text-align: left;
+			> a, 
+			> a:visited, 
+			> a:focus{
+				font: 400 14px/120% $primary-font;
+				text-transform: inherit;
+				padding: 5px 0;
+				color: $color-dark-grey;
+			}
+		}
+	}
+	
+}
