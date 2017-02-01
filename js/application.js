@@ -103,5 +103,78 @@ $(function () {
 	return{
 		init: init
 	};
-	
+	$(function () {
+
+    var breakpoint = $(window).width(),
+        $body = $('body'),
+        $ribbon = $('#s4-ribbonrow'),
+        tempRibbonH = $ribbon.height(),
+        $navMain = $('.nav-main'),
+        $thirdM = $('.third-level-navigation.active .metro-menu > div > .column'),
+		$titleM = $('.metro-menu > div > .column h3');
+
+    //  POPUPS
+    var Popup = function () {
+        open = function (id, callback) {
+            $("#" + id).addClass("active");
+            $('body').addClass("hidde-scroll");
+        }
+        close = function (id, callback) {
+            $("#" + id).removeClass("active");
+            $('body').removeClass("hidde-scroll");
+        }
+    }
+
+    //  OPEN MOBILE NAVIGATION
+    $('.open-menu').on('click', function () {
+        var $this = $(this);
+        $this.parent().toggleClass('active').siblings('.nav-main').toggleClass('active');
+        $body.toggleClass('hidde-scroll');
+    });
+
+    // OPEN FIRST LEVEL NAVIGATION
+    $('.first-level').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this),
+				query = $this.data('query');
+
+        equalheight($thirdM);
+        equalheight($titleM);
+
+        $this.parent().find('#' + query).toggleClass("active");
+        $this.parent().siblings().find(".second-level-navigation").removeClass("active");
+    });
+
+    // OPEN SECOND LEVEL NAVIGATION
+    $('.second-level').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this),
+				query = $this.data('query');
+
+        equalheight($thirdM);
+        equalheight($titleM);
+
+        $this.parent().find('#' + query).slideToggle();
+        $this.parent().siblings().find(".third-level-navigation").slideUp();
+    });
+
+    $(window).on("load resize", function (e) {
+
+        // EQUALIZE MENU COLUMNS
+        equalheight($thirdM);
+        equalheight($titleM);
+
+        // MOBILE MENU POSITION
+        if (breakpoint >= 1110) {
+            $navMain.css("top", "auto");
+        }
+        else if (breakpoint <= 1110 && $ribbon.length > 0) {
+            $navMain.css("top", "94px");
+        }
+        else if (breakpoint <= 1110 && $ribbon.length < 0) {
+            $navMain.css("top", "50px");
+        }
+
+    });
+});
 }();*/
