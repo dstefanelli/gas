@@ -56,6 +56,34 @@
 
 .searchbox{
 	margin-bottom: 8px;
+	padding: 8px 0 0;
+	.ms-sbcell{
+		width: 100%;
+		> input {
+			width: 100%!important;
+			line-height: 30px;
+			height: 30px;
+			background: transparent;
+			border: 0!important;
+			color: #fff;
+			&:focus{
+				outline: none;
+			}
+		}
+		> a{
+			width: 24px;
+			height: 37px;
+			display: block;
+			background-image: url('../img/search-white.png');
+			background-repeat: no-repeat;
+			background-size: 23px 23px;
+			background-position: center right;
+			img{
+				display: none;
+			}
+		}
+	}
+	 
 }
 
 .nav-main {
@@ -74,6 +102,7 @@
     width: 100%;
 	visibility: hidden;
     overflow: auto;
+	z-index: 10;
 	&.active{
 		@include transform(scale(1));
 		opacity: 1;
@@ -184,7 +213,27 @@
 	
 }
 @media screen and (min-width: 1110px){
-	
+	.searchbox {
+		position: absolute;
+		bottom: 3px;
+		right: 15px;
+		z-index: 99;
+		padding: 0;
+		.ms-sbcell input {
+			border: 0!important;
+			line-height: 37px;
+			height: 37px;
+			border-bottom: 1px solid $color-light-grey!important;
+			color: $color-dark-grey;
+			&:focus{
+				outline: none;
+				}
+		}
+
+		.ms-sbcell > a {
+			background-image: url('../img/search.png');
+		}
+	}
 	.nav-main {
 		position: relative;
 		top: auto;
@@ -204,24 +253,6 @@
 	}
 	.nav-button {
 		display: none;
-	}
-	.searchbox {
-		position: absolute;
-		bottom: 3px;
-		right: 15px;
-		.ms-sbcell input {
-			border: 0!important;
-			line-height: 37px;
-			height: 37px;
-			border-bottom: 1px solid $color-light-grey;
-		}
-		.ms-sbcell > a {
-			width: 37px;
-			height: 37px;
-			display: inline-block;
-			text-align: center;
-			vertical-align: middle;
-		}
 	}
 	.first-level-navigation {
 		position: relative;
@@ -260,11 +291,32 @@
 			> a, 
 			> a:visited, 
 			> a:focus{
-				font: 400 14px/120% $primary-font;
+				font: 400 14px/40px $primary-font;
 				text-transform: uppercase;
-				padding: 0 5px;
+				padding: 0 12px;
 				color: #fff;
 				white-space: nowrap;
+				&.active{
+					background-color: #d2d4d5;
+					@include box-shadow(0px 1px 2px 0px #555 inset);
+					color: #333;
+    				position: relative;
+					@include transition(all .4s);
+					&::after{
+						content: "";
+						position: absolute;
+						bottom: -10px;
+						left: 50%;
+						margin-left: -10px;
+						width: 20px;
+						height: 20px;
+						
+						@include transform(rotate(45deg)skew(-15deg,-15deg));
+						background-color: #d2d4d5;
+						z-index: 10;
+						
+					}
+				}
 			}
 		}
 	}
